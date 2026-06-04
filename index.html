@@ -143,7 +143,7 @@ img{
 
 .memory img{
     width:100%;
-    aspect-ratio:4/3; /* FIXED 4:3 */
+    aspect-ratio:4/5; /* 16:20 portrait look */
     object-fit:cover;
 }
 
@@ -223,59 +223,85 @@ img{
         <h2>Memory Gallery 📸</h2>
         <p>Scroll through our little scrapbook</p>
 
-        <div class="gallery">
+<div class="memory" onclick="openModal('https://picsum.photos/800/1000?1','June 1, 2024','First memory ❤️ This was the start of everything.')">
+    <img src="https://picsum.photos/800/1000?1">
+    <div class="info">
+        <small>June 1, 2024</small>
+        <p>First memory ❤️</p>
+    </div>
+</div>
 
-            <div class="memory" onclick="openModal('https://picsum.photos/600/450?1','June 1, 2024','First memory ❤️ This was the start of everything.')">
-                <img src="https://picsum.photos/600/450?1">
-                <p>June 1, 2024</p>
-            </div>
+<div class="memory" onclick="openModal('https://picsum.photos/800/1000?2','June 10, 2024','Random laugh moment 😂💗')">
+    <img src="https://picsum.photos/800/1000?2">
+    <div class="info">
+        <small>June 10, 2024</small>
+        <p>Laugh moment 😂</p>
+    </div>
+</div>
 
-            <div class="memory" onclick="openModal('https://picsum.photos/600/450?2','June 10, 2024','Random laugh moment 😂 I still remember this.')">
-                <img src="https://picsum.photos/600/450?2">
-                <p>June 10, 2024</p>
-            </div>
+<div class="memory" onclick="openModal('https://picsum.photos/800/1000?3','July 2, 2024','Your smile hit different 😊💗')">
+    <img src="https://picsum.photos/800/1000?3">
+    <div class="info">
+        <small>July 2, 2024</small>
+        <p>Smile 😊</p>
+    </div>
+</div>
 
-            <div class="memory" onclick="openModal('https://picsum.photos/600/450?3','July 2, 2024','Your smile here hit different 😊💗')">
-                <img src="https://picsum.photos/600/450?3">
-                <p>July 2, 2024</p>
-            </div>
+<div class="memory" onclick="openModal('https://picsum.photos/800/1000?4','July 15, 2024','Late night talk 🌙')">
+    <img src="https://picsum.photos/800/1000?4">
+    <div class="info">
+        <small>July 15, 2024</small>
+        <p>Talk 🌙</p>
+    </div>
+</div>
 
-            <div class="memory" onclick="openModal('https://picsum.photos/600/450?4','July 15, 2024','Late night talk I’ll never forget 🌙')">
-                <img src="https://picsum.photos/600/450?4">
-                <p>July 15, 2024</p>
-            </div>
+<div class="memory" onclick="openModal('https://picsum.photos/800/1000?5','Aug 1, 2024','Simple day 🏡')">
+    <img src="https://picsum.photos/800/1000?5">
+    <div class="info">
+        <small>Aug 1, 2024</small>
+        <p>Simple 🏡</p>
+    </div>
+</div>
 
-            <div class="memory" onclick="openModal('https://picsum.photos/600/450?5','Aug 1, 2024','Simple day but it felt special 🏡')">
-                <img src="https://picsum.photos/600/450?5">
-                <p>Aug 1, 2024</p>
-            </div>
+<div class="memory" onclick="openModal('https://picsum.photos/800/1000?6','Aug 12, 2024','Unplanned 💫')">
+    <img src="https://picsum.photos/800/1000?6">
+    <div class="info">
+        <small>Aug 12, 2024</small>
+        <p>Unplanned 💫</p>
+    </div>
+</div>
 
-            <div class="memory" onclick="openModal('https://picsum.photos/600/450?6','Aug 12, 2024','Unplanned but unforgettable 💫')">
-                <img src="https://picsum.photos/600/450?6">
-                <p>Aug 12, 2024</p>
-            </div>
+<div class="memory" onclick="openModal('https://picsum.photos/800/1000?7','Sept 5, 2024','Favorite day 💗')">
+    <img src="https://picsum.photos/800/1000?7">
+    <div class="info">
+        <small>Sept 5, 2024</small>
+        <p>Favorite 💗</p>
+    </div>
+</div>
 
-            <div class="memory" onclick="openModal('https://picsum.photos/600/450?7','Sept 5, 2024','One of my favorite days 💗')">
-                <img src="https://picsum.photos/600/450?7">
-                <p>Sept 5, 2024</p>
-            </div>
+<div class="memory" onclick="openModal('https://picsum.photos/800/1000?8','Oct 1, 2024','Everything felt right ✨')">
+    <img src="https://picsum.photos/800/1000?8">
+    <div class="info">
+        <small>Oct 1, 2024</small>
+        <p>Moment ✨</p>
+    </div>
+</div>
 
-            <div class="memory" onclick="openModal('https://picsum.photos/600/450?8','Oct 1, 2024','Nothing special but everything felt right ✨')">
-                <img src="https://picsum.photos/600/450?8">
-                <p>Oct 1, 2024</p>
-            </div>
+<div class="memory" onclick="openModal('https://picsum.photos/800/1000?9','Nov 3, 2024','I miss this 😭')">
+    <img src="https://picsum.photos/800/1000?9">
+    <div class="info">
+        <small>Nov 3, 2024</small>
+        <p>Missing 😭</p>
+    </div>
+</div>
 
-            <div class="memory" onclick="openModal('https://picsum.photos/600/450?9','Nov 3, 2024','I didn’t know I’d miss this 😭')">
-                <img src="https://picsum.photos/600/450?9">
-                <p>Nov 3, 2024</p>
-            </div>
-
-            <div class="memory" onclick="openModal('https://picsum.photos/600/450?10','Dec 25, 2024','Christmas felt warmer with you 🎄💗')">
-                <img src="https://picsum.photos/600/450?10">
-                <p>Dec 25, 2024</p>
-            </div>
-
-        </div>
+<div class="memory" onclick="openModal('https://picsum.photos/800/1000?10','Dec 25, 2024','Christmas memory 🎄💗')">
+    <img src="https://picsum.photos/800/1000?10">
+    <div class="info">
+        <small>Dec 25, 2024</small>
+        <p>Christmas 🎄</p>
+    </div>
+</div>
 
         <button onclick="nextSection('hunt')">Continue →</button>
     </div>
@@ -418,10 +444,11 @@ noBtn.addEventListener("mouseover",()=>{
 });
 
 // MODAL FUNCTIONS
-function openModal(img, text){
+function openModal(img, date, story){
     document.getElementById("modal").style.display="flex";
     document.getElementById("modalImg").src=img;
-    document.getElementById("modalText").innerText=text;
+    document.getElementById("modalText").innerHTML =
+        "<b>" + date + "</b><br><br>" + story;
 }
 
 function closeModal(){
@@ -432,3 +459,4 @@ function closeModal(){
 
 </body>
 </html>
+
