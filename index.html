@@ -116,35 +116,41 @@ img{
 }
 
 /* ===================== */
-/* MEMORY GALLERY ADDED  */
+/* MEMORY GALLERY UPDATED */
 /* ===================== */
 
 .gallery{
     height:70vh;
     overflow-y:auto;
     width:100%;
-    display:flex;
-    flex-direction:column;
-    gap:20px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
     padding:10px;
 }
 
 .memory{
-    background:rgba(255,255,255,0.05);
-    padding:15px;
+    background:rgba(255,255,255,0.06);
     border-radius:15px;
+    overflow:hidden;
     cursor:pointer;
     transition:0.3s;
 }
 
 .memory:hover{
-    transform:scale(1.02);
-    background:rgba(255,255,255,0.1);
+    transform:scale(1.03);
 }
 
 .memory img{
     width:100%;
-    border-radius:15px;
+    height:140px;
+    object-fit:cover;
+}
+
+.memory p{
+    margin:5px 10px;
+    font-size:0.9rem;
+    color:#fff;
 }
 
 /* zoom popup */
@@ -171,6 +177,8 @@ img{
 #modal p{
     margin-top:15px;
     color:#ffc6db;
+    text-align:center;
+    padding:0 20px;
 }
 
 </style>
@@ -203,16 +211,13 @@ img{
             This is where I'd put one of our favorite pictures together.
         </p>
 
-        <!-- CHANGED ONLY HERE -->
         <button onclick="nextSection('gallery')">
             Continue →
         </button>
     </div>
 </section>
 
-<!-- ===================== -->
-<!-- MEMORY GALLERY PAGE   -->
-<!-- ===================== -->
+<!-- MEMORY GALLERY PAGE -->
 <section class="section" id="gallery">
     <div class="card">
         <h2>Memory Gallery 📸</h2>
@@ -220,54 +225,54 @@ img{
 
         <div class="gallery">
 
-            <div class="memory" onclick="openModal('https://picsum.photos/500/400?1','First memory ❤️')">
+            <div class="memory" onclick="openModal('https://picsum.photos/500/400?1','June 1, 2024','First memory ❤️ This was the start of everything.')">
                 <img src="https://picsum.photos/500/400?1">
-                <p>First memory ❤️</p>
+                <p>June 1, 2024 - First memory ❤️</p>
             </div>
 
-            <div class="memory" onclick="openModal('https://picsum.photos/500/400?2','Random laugh moment 😂')">
+            <div class="memory" onclick="openModal('https://picsum.photos/500/400?2','June 10, 2024','Random laugh moment we didn’t expect 😂💗')">
                 <img src="https://picsum.photos/500/400?2">
-                <p>Random laugh moment 😂</p>
+                <p>June 10, 2024 - Laughs 😂</p>
             </div>
 
-            <div class="memory" onclick="openModal('https://picsum.photos/500/400?3','Simple days together ✨')">
+            <div class="memory" onclick="openModal('https://picsum.photos/500/400?3','July 2, 2024','Your smile here hit different 😊')">
                 <img src="https://picsum.photos/500/400?3">
-                <p>Simple days together ✨</p>
+                <p>July 2, 2024 - Smile 😊</p>
             </div>
 
-            <div class="memory" onclick="openModal('https://picsum.photos/500/400?4','My favorite smile 😊')">
+            <div class="memory" onclick="openModal('https://picsum.photos/500/400?4','July 15, 2024','Late night talk I still remember 🌙')">
                 <img src="https://picsum.photos/500/400?4">
-                <p>My favorite smile 😊</p>
+                <p>July 15, 2024 - Talk 🌙</p>
             </div>
 
-            <div class="memory" onclick="openModal('https://picsum.photos/500/400?5','Late night talks 🌙')">
+            <div class="memory" onclick="openModal('https://picsum.photos/500/400?5','Aug 1, 2024','Simple day but it felt special 🏡')">
                 <img src="https://picsum.photos/500/400?5">
-                <p>Late night talks 🌙</p>
+                <p>Aug 1, 2024 - Simple 🏡</p>
             </div>
 
-            <div class="memory" onclick="openModal('https://picsum.photos/500/400?6','Random selfie 🤳')">
+            <div class="memory" onclick="openModal('https://picsum.photos/500/400?6','Aug 12, 2024','Unplanned but unforgettable 💫')">
                 <img src="https://picsum.photos/500/400?6">
-                <p>Random selfie 🤳</p>
+                <p>Aug 12, 2024 - Unplanned 💫</p>
             </div>
 
-            <div class="memory" onclick="openModal('https://picsum.photos/500/400?7','Soft moments 💗')">
+            <div class="memory" onclick="openModal('https://picsum.photos/500/400?7','Sept 5, 2024','One of my favorite days 💗')">
                 <img src="https://picsum.photos/500/400?7">
-                <p>Soft moments 💗</p>
+                <p>Sept 5, 2024 - Favorite 💗</p>
             </div>
 
-            <div class="memory" onclick="openModal('https://picsum.photos/500/400?8','Funny day 😂')">
+            <div class="memory" onclick="openModal('https://picsum.photos/500/400?8','Oct 1, 2024','Nothing special but everything felt right ✨')">
                 <img src="https://picsum.photos/500/400?8">
-                <p>Funny day 😂</p>
+                <p>Oct 1, 2024 - Moment ✨</p>
             </div>
 
-            <div class="memory" onclick="openModal('https://picsum.photos/500/400?9','Almost perfect day ✨')">
+            <div class="memory" onclick="openModal('https://picsum.photos/500/400?9','Nov 3, 2024','I didn’t know I’d miss this 😭')">
                 <img src="https://picsum.photos/500/400?9">
-                <p>Almost perfect day ✨</p>
+                <p>Nov 3, 2024 - Missing 😭</p>
             </div>
 
-            <div class="memory" onclick="openModal('https://picsum.photos/500/400?10','Forever memory ❤️')">
+            <div class="memory" onclick="openModal('https://picsum.photos/500/400?10','Dec 25, 2024','Christmas felt warmer with you 🎄💗')">
                 <img src="https://picsum.photos/500/400?10">
-                <p>Forever memory ❤️</p>
+                <p>Dec 25, 2024 - Christmas 🎄</p>
             </div>
 
         </div>
@@ -324,7 +329,7 @@ img{
     </div>
 </section>
 
-<!-- MODAL (ZOOM VIEW) -->
+<!-- MODAL -->
 <div id="modal" onclick="closeModal()">
     <img id="modalImg">
     <p id="modalText"></p>
