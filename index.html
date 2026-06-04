@@ -6,20 +6,26 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>A Little Journey For You ❤️</title>
 
+<!-- ✨ FONTS (multi-style aesthetic) -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+
 <style>
+
+/* RESET */
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family: 'Segoe UI', sans-serif;
 }
 
+/* BASE */
 body{
-    background:#0f172a;
+    background: radial-gradient(circle at top, #1a1f3a, #0f172a);
     color:white;
     overflow:hidden;
 }
 
+/* SECTION ANIMATION */
 .section{
     display:none;
     height:100vh;
@@ -29,41 +35,67 @@ body{
     flex-direction:column;
     text-align:center;
     padding:20px;
+    animation: fadeIn 0.8s ease;
 }
 
-.active{
-    display:flex;
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(10px);}
+    to{opacity:1; transform:translateY(0);}
 }
 
+.active{ display:flex; }
+
+/* BUTTON */
 button{
     margin-top:20px;
     padding:12px 25px;
     border:none;
     border-radius:30px;
     cursor:pointer;
-    background:#ff4d8d;
+    background:linear-gradient(135deg,#ff4d8d,#ff7aa2);
     color:white;
     font-size:1rem;
+    font-family:'Quicksand', sans-serif;
+    box-shadow:0 8px 20px rgba(255,77,141,0.3);
+    transition:0.3s;
 }
 
 button:hover{
-    transform:scale(1.05);
+    transform:scale(1.07);
+    box-shadow:0 10px 25px rgba(255,77,141,0.5);
 }
 
+/* CARD (glass + glow) */
 .card{
     background:rgba(255,255,255,0.08);
-    backdrop-filter:blur(10px);
+    backdrop-filter:blur(14px);
     padding:18px;
-    border-radius:20px;
+    border-radius:22px;
     width:95%;
-    max-width:420px; /* PHONE FRIENDLY */
+    max-width:420px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+    border:1px solid rgba(255,255,255,0.08);
 }
 
+/* TEXT STYLE VARIATION */
+h1, h2{
+    font-family:'Playfair Display', serif;
+    letter-spacing:1px;
+}
+
+p{
+    font-family:'Poppins', sans-serif;
+    font-size:0.95rem;
+    opacity:0.9;
+}
+
+/* IMAGE */
 img{
     width:100%;
     max-width:320px;
     border-radius:20px;
     margin:20px 0;
+    box-shadow:0 10px 25px rgba(0,0,0,0.5);
 }
 
 /* ENVELOPES */
@@ -79,15 +111,21 @@ img{
 .envelope{
     font-size:55px;
     cursor:pointer;
-    transition:.3s;
+    transition:0.3s;
+    filter:drop-shadow(0 5px 10px rgba(0,0,0,0.4));
 }
 
-/* STARS */
+.envelope:hover{
+    transform:translateY(-8px) scale(1.1);
+}
+
+/* STAR BACKGROUND (glow upgrade) */
 .stars{
     position:fixed;
     width:100%;
     height:100%;
     z-index:-1;
+    filter:blur(0.2px);
 }
 
 .star{
@@ -96,9 +134,10 @@ img{
     height:2px;
     background:white;
     border-radius:50%;
+    box-shadow:0 0 8px white;
 }
 
-/* GALLERY (PHONE VIEW ONLY CHANGE) */
+/* GALLERY (POLAROID STYLE) */
 .gallery{
     height:65vh;
     overflow-y:auto;
@@ -110,20 +149,24 @@ img{
 }
 
 .memory{
-    background:rgba(255,255,255,0.05);
+    background:rgba(255,255,255,0.06);
     padding:12px;
-    border-radius:15px;
+    border-radius:16px;
     cursor:pointer;
     transition:0.3s;
+    box-shadow:0 8px 18px rgba(0,0,0,0.35);
+    border:1px solid rgba(255,255,255,0.06);
 }
 
 .memory:hover{
-    transform:scale(1.02);
+    transform:scale(1.03);
+    box-shadow:0 12px 25px rgba(255,77,141,0.2);
 }
 
 .memory img{
     width:100%;
     border-radius:15px;
+    box-shadow:0 8px 15px rgba(0,0,0,0.4);
 }
 
 /* MODAL */
@@ -146,12 +189,24 @@ img{
     width:90%;
     max-width:350px;
     border-radius:20px;
+    box-shadow:0 15px 30px rgba(0,0,0,0.6);
 }
 
 #modal p{
     margin-top:15px;
     color:#ffc6db;
     padding:0 15px;
+    font-family:'Quicksand', sans-serif;
+}
+
+/* SMALL ANIMATION POP */
+.memory, .card{
+    animation: pop 0.6s ease;
+}
+
+@keyframes pop{
+    from{transform:scale(0.98); opacity:0.5;}
+    to{transform:scale(1); opacity:1;}
 }
 
 </style>
@@ -177,20 +232,13 @@ img{
 <section class="section" id="memory1">
     <div class="card">
         <h2>Chapter 1</h2>
-
         <img src="https://picsum.photos/400/300" alt="photo">
-
-        <p>
-            This is where I'd put one of our favorite pictures together.
-        </p>
-
-        <button onclick="nextSection('gallery')">
-            Continue →
-        </button>
+        <p>This is where I'd put one of our favorite pictures together.</p>
+        <button onclick="nextSection('gallery')">Continue →</button>
     </div>
 </section>
 
-<!-- GALLERY (UNCHANGED STRUCTURE) -->
+<!-- GALLERY -->
 <section class="section" id="gallery">
     <div class="card">
         <h2>Memory Gallery 📸</h2>
@@ -282,15 +330,9 @@ img{
 <section class="section" id="final">
     <div class="card">
         <h1>One Last Thing...</h1>
-
-        <img src="https://picsum.photos/500/350" alt="photo">
-
-        <p style="margin:20px 0;">
-            Every memory brought me here.
-        </p>
-
+        <img src="https://picsum.photos/500/350">
+        <p style="margin:20px 0;">Every memory brought me here.</p>
         <h2>Will You Be My Girlfriend? ❤️</h2>
-
         <div class="final-buttons">
             <button onclick="yes()">YES 💖</button>
             <button id="noBtn">NO 😭</button>
@@ -305,7 +347,7 @@ img{
 </div>
 
 <script>
-// same JS (unchanged)
+// unchanged JS
 for(let i=0;i<120;i++){
     let star=document.createElement("div");
     star.classList.add("star");
@@ -319,9 +361,7 @@ function nextSection(id){
     document.getElementById(id).classList.add("active");
 }
 
-function wrong(){
-    document.getElementById("message").innerText="Not this one 😜 Try again!";
-}
+function wrong(){ document.getElementById("message").innerText="Not this one 😜 Try again!"; }
 
 function correct(){
     document.getElementById("message").innerText="You found it! ❤️";
@@ -331,16 +371,13 @@ function correct(){
 const text="Thank you for every smile, every conversation, every memory we've shared. Every day with you has become one of my favorite days. Before this journey ends, there's something I've wanted to ask you...";
 
 let i=0;
-
 function typeWriter(){
     const el=document.getElementById("typewriter");
     const interval=setInterval(()=>{
         if(i < text.length){
             el.innerHTML += text.charAt(i);
             i++;
-        }else{
-            clearInterval(interval);
-        }
+        }else clearInterval(interval);
     },40);
 }
 
@@ -349,7 +386,6 @@ function yes(){
 }
 
 const noBtn=document.getElementById("noBtn");
-
 noBtn.addEventListener("mouseover",()=>{
     const x=Math.random()*300-150;
     const y=Math.random()*200-100;
