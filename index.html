@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -113,8 +114,68 @@ img{
     background:white;
     border-radius:50%;
 }
+
+/* ===================== */
+/* MEMORY GALLERY ADDED  */
+/* ===================== */
+
+.gallery{
+    height:70vh;
+    overflow-y:auto;
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+    padding:10px;
+}
+
+.memory{
+    background:rgba(255,255,255,0.05);
+    padding:15px;
+    border-radius:15px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.memory:hover{
+    transform:scale(1.02);
+    background:rgba(255,255,255,0.1);
+}
+
+.memory img{
+    width:100%;
+    border-radius:15px;
+}
+
+/* zoom popup */
+#modal{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.8);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    z-index:999;
+}
+
+#modal img{
+    width:80%;
+    max-width:600px;
+    border-radius:20px;
+}
+
+#modal p{
+    margin-top:15px;
+    color:#ffc6db;
+}
+
 </style>
 </head>
+
 <body>
 
 <div class="stars" id="stars"></div>
@@ -142,9 +203,76 @@ img{
             This is where I'd put one of our favorite pictures together.
         </p>
 
-        <button onclick="nextSection('hunt')">
+        <!-- CHANGED ONLY HERE -->
+        <button onclick="nextSection('gallery')">
             Continue →
         </button>
+    </div>
+</section>
+
+<!-- ===================== -->
+<!-- MEMORY GALLERY PAGE   -->
+<!-- ===================== -->
+<section class="section" id="gallery">
+    <div class="card">
+        <h2>Memory Gallery 📸</h2>
+        <p>Scroll through our little scrapbook</p>
+
+        <div class="gallery">
+
+            <div class="memory" onclick="openModal('https://picsum.photos/500/400?1','First memory ❤️')">
+                <img src="https://picsum.photos/500/400?1">
+                <p>First memory ❤️</p>
+            </div>
+
+            <div class="memory" onclick="openModal('https://picsum.photos/500/400?2','Random laugh moment 😂')">
+                <img src="https://picsum.photos/500/400?2">
+                <p>Random laugh moment 😂</p>
+            </div>
+
+            <div class="memory" onclick="openModal('https://picsum.photos/500/400?3','Simple days together ✨')">
+                <img src="https://picsum.photos/500/400?3">
+                <p>Simple days together ✨</p>
+            </div>
+
+            <div class="memory" onclick="openModal('https://picsum.photos/500/400?4','My favorite smile 😊')">
+                <img src="https://picsum.photos/500/400?4">
+                <p>My favorite smile 😊</p>
+            </div>
+
+            <div class="memory" onclick="openModal('https://picsum.photos/500/400?5','Late night talks 🌙')">
+                <img src="https://picsum.photos/500/400?5">
+                <p>Late night talks 🌙</p>
+            </div>
+
+            <div class="memory" onclick="openModal('https://picsum.photos/500/400?6','Random selfie 🤳')">
+                <img src="https://picsum.photos/500/400?6">
+                <p>Random selfie 🤳</p>
+            </div>
+
+            <div class="memory" onclick="openModal('https://picsum.photos/500/400?7','Soft moments 💗')">
+                <img src="https://picsum.photos/500/400?7">
+                <p>Soft moments 💗</p>
+            </div>
+
+            <div class="memory" onclick="openModal('https://picsum.photos/500/400?8','Funny day 😂')">
+                <img src="https://picsum.photos/500/400?8">
+                <p>Funny day 😂</p>
+            </div>
+
+            <div class="memory" onclick="openModal('https://picsum.photos/500/400?9','Almost perfect day ✨')">
+                <img src="https://picsum.photos/500/400?9">
+                <p>Almost perfect day ✨</p>
+            </div>
+
+            <div class="memory" onclick="openModal('https://picsum.photos/500/400?10','Forever memory ❤️')">
+                <img src="https://picsum.photos/500/400?10">
+                <p>Forever memory ❤️</p>
+            </div>
+
+        </div>
+
+        <button onclick="nextSection('hunt')">Continue →</button>
     </div>
 </section>
 
@@ -195,6 +323,12 @@ img{
         </div>
     </div>
 </section>
+
+<!-- MODAL (ZOOM VIEW) -->
+<div id="modal" onclick="closeModal()">
+    <img id="modalImg">
+    <p id="modalText"></p>
+</div>
 
 <script>
 
@@ -278,6 +412,17 @@ noBtn.addEventListener("mouseover",()=>{
     noBtn.style.transform=
     `translate(${x}px, ${y}px)`;
 });
+
+// MODAL FUNCTIONS
+function openModal(img, text){
+    document.getElementById("modal").style.display="flex";
+    document.getElementById("modalImg").src=img;
+    document.getElementById("modalText").innerText=text;
+}
+
+function closeModal(){
+    document.getElementById("modal").style.display="none";
+}
 
 </script>
 
