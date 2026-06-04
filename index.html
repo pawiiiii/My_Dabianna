@@ -28,7 +28,7 @@ body{
     align-items:center;
     flex-direction:column;
     text-align:center;
-    padding:30px;
+    padding:20px;
 }
 
 .active{
@@ -53,53 +53,33 @@ button:hover{
 .card{
     background:rgba(255,255,255,0.08);
     backdrop-filter:blur(10px);
-    padding:20px;
+    padding:18px;
     border-radius:20px;
-    max-width:700px;
+    width:95%;
+    max-width:420px; /* PHONE FRIENDLY */
 }
 
 img{
-    width:250px;
+    width:100%;
+    max-width:320px;
     border-radius:20px;
     margin:20px 0;
 }
 
+/* ENVELOPES */
 .envelopes{
     display:flex;
-    gap:20px;
-    margin-top:30px;
+    gap:15px;
+    margin-top:25px;
 }
 
 .envelope{
-    font-size:70px;
+    font-size:55px;
     cursor:pointer;
     transition:.3s;
 }
 
-.envelope:hover{
-    transform:translateY(-10px);
-}
-
-#message{
-    margin-top:20px;
-    font-size:1.1rem;
-    color:#ffc6db;
-}
-
-#typewriter{
-    max-width:700px;
-    line-height:1.8;
-}
-
-.final-buttons{
-    display:flex;
-    gap:20px;
-}
-
-#noBtn{
-    position:relative;
-}
-
+/* STARS */
 .stars{
     position:fixed;
     width:100%;
@@ -115,23 +95,20 @@ img{
     border-radius:50%;
 }
 
-/* ===================== */
-/* MEMORY GALLERY ADDED  */
-/* ===================== */
-
+/* GALLERY (PHONE VIEW ONLY CHANGE) */
 .gallery{
-    height:70vh;
+    height:65vh;
     overflow-y:auto;
     width:100%;
     display:flex;
     flex-direction:column;
-    gap:20px;
+    gap:15px;
     padding:10px;
 }
 
 .memory{
     background:rgba(255,255,255,0.05);
-    padding:15px;
+    padding:12px;
     border-radius:15px;
     cursor:pointer;
     transition:0.3s;
@@ -139,7 +116,6 @@ img{
 
 .memory:hover{
     transform:scale(1.02);
-    background:rgba(255,255,255,0.1);
 }
 
 .memory img{
@@ -147,92 +123,35 @@ img{
     border-radius:15px;
 }
 
-/* zoom popup */
+/* MODAL */
 #modal{
     position:fixed;
     top:0;
     left:0;
     width:100%;
     height:100%;
-    background:rgba(0,0,0,0.8);
+    background:rgba(0,0,0,0.85);
     display:none;
     justify-content:center;
     align-items:center;
     flex-direction:column;
     z-index:999;
+    text-align:center;
 }
 
 #modal img{
-    width:80%;
-    max-width:600px;
+    width:90%;
+    max-width:350px;
     border-radius:20px;
 }
 
 #modal p{
     margin-top:15px;
     color:#ffc6db;
+    padding:0 15px;
 }
 
 </style>
-    @media (max-width: 768px){
-
-    body{
-        overflow:auto;
-    }
-
-    .card{
-        max-width:95%;
-        padding:15px;
-    }
-
-    h1{
-        font-size:1.5rem;
-    }
-
-    h2{
-        font-size:1.2rem;
-    }
-
-    p{
-        font-size:0.95rem;
-    }
-
-    button{
-        width:100%;
-        font-size:1rem;
-    }
-
-    img{
-        width:100%;
-        height:auto;
-    }
-
-    .gallery{
-        height:65vh;
-    }
-
-    .memory img{
-        border-radius:12px;
-    }
-
-    .final-buttons{
-        flex-direction:column;
-        gap:10px;
-    }
-
-    .envelopes{
-        gap:10px;
-        justify-content:center;
-    }
-
-    .envelope{
-        font-size:50px;
-    }
-
-    #modal img{
-        width:90%;
-    }
-}
 </head>
 
 <body>
@@ -262,16 +181,13 @@ img{
             This is where I'd put one of our favorite pictures together.
         </p>
 
-        <!-- CHANGED ONLY HERE -->
         <button onclick="nextSection('gallery')">
             Continue →
         </button>
     </div>
 </section>
 
-<!-- ===================== -->
-<!-- MEMORY GALLERY PAGE   -->
-<!-- ===================== -->
+<!-- GALLERY (UNCHANGED STRUCTURE) -->
 <section class="section" id="gallery">
     <div class="card">
         <h2>Memory Gallery 📸</h2>
@@ -354,12 +270,8 @@ img{
 <section class="section" id="letter">
     <div class="card">
         <h2>A Letter For You ❤️</h2>
-
         <p id="typewriter"></p>
-
-        <button onclick="nextSection('final')">
-            Continue
-        </button>
+        <button onclick="nextSection('final')">Continue</button>
     </div>
 </section>
 
@@ -383,56 +295,42 @@ img{
     </div>
 </section>
 
-<!-- MODAL (ZOOM VIEW) -->
+<!-- MODAL -->
 <div id="modal" onclick="closeModal()">
     <img id="modalImg">
     <p id="modalText"></p>
 </div>
 
 <script>
-
-// stars
+// same JS (unchanged)
 for(let i=0;i<120;i++){
     let star=document.createElement("div");
     star.classList.add("star");
-
     star.style.left=Math.random()*100+"%";
     star.style.top=Math.random()*100+"%";
-
     document.getElementById("stars").appendChild(star);
 }
 
 function nextSection(id){
-    document.querySelectorAll(".section")
-    .forEach(sec=>sec.classList.remove("active"));
-
-    document.getElementById(id)
-    .classList.add("active");
+    document.querySelectorAll(".section").forEach(sec=>sec.classList.remove("active"));
+    document.getElementById(id).classList.add("active");
 }
 
 function wrong(){
-    document.getElementById("message")
-    .innerText="Not this one 😜 Try again!";
+    document.getElementById("message").innerText="Not this one 😜 Try again!";
 }
 
 function correct(){
-    document.getElementById("message")
-    .innerText="You found it! ❤️";
-
-    setTimeout(()=>{
-        nextSection("letter");
-        typeWriter();
-    },1000);
+    document.getElementById("message").innerText="You found it! ❤️";
+    setTimeout(()=>{ nextSection("letter"); typeWriter(); },1000);
 }
 
-const text =
-"Thank you for every smile, every conversation, every memory we've shared. Every day with you has become one of my favorite days. Before this journey ends, there's something I've wanted to ask you...";
+const text="Thank you for every smile, every conversation, every memory we've shared. Every day with you has become one of my favorite days. Before this journey ends, there's something I've wanted to ask you...";
 
 let i=0;
 
 function typeWriter(){
     const el=document.getElementById("typewriter");
-
     const interval=setInterval(()=>{
         if(i < text.length){
             el.innerHTML += text.charAt(i);
@@ -444,22 +342,7 @@ function typeWriter(){
 }
 
 function yes(){
-    document.body.innerHTML=`
-    <div style="
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
-    background:#0f172a;
-    color:white;
-    flex-direction:column;
-    text-align:center;">
-    
-    <h1>AAAAAAAAAA ❤️❤️❤️</h1>
-    <h2>You Just Made Me The Happiest Person Alive 😭</h2>
-
-    </div>
-    `;
+    document.body.innerHTML=`<div style="display:flex;justify-content:center;align-items:center;height:100vh;background:#0f172a;color:white;flex-direction:column;text-align:center;"><h1>AAAAAAAAAA ❤️❤️❤️</h1><h2>You Just Made Me The Happiest Person Alive 😭</h2></div>`;
 }
 
 const noBtn=document.getElementById("noBtn");
@@ -467,13 +350,10 @@ const noBtn=document.getElementById("noBtn");
 noBtn.addEventListener("mouseover",()=>{
     const x=Math.random()*300-150;
     const y=Math.random()*200-100;
-
-    noBtn.style.transform=
-    `translate(${x}px, ${y}px)`;
+    noBtn.style.transform=`translate(${x}px, ${y}px)`;
 });
 
-// MODAL FUNCTIONS
-function openModal(img, text){
+function openModal(img,text){
     document.getElementById("modal").style.display="flex";
     document.getElementById("modalImg").src=img;
     document.getElementById("modalText").innerText=text;
@@ -482,7 +362,6 @@ function openModal(img, text){
 function closeModal(){
     document.getElementById("modal").style.display="none";
 }
-
 </script>
 
 </body>
