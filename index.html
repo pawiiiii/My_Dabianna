@@ -673,8 +673,7 @@ function createFirework(){
 
 function animate(){
 
-    ctx.fillStyle = "rgba(0,0,0,0.12)";
-    ctx.fillRect(0,0,canvas.width,canvas.height);
+    ctx.clearRect(0,0,canvas.width,canvas.height);
 
     for(let i=0;i<particles.length;i++){
         let p = particles[i];
