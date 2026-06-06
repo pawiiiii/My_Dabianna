@@ -232,6 +232,14 @@ img{
     }
 }
 
+
+/* CINEMATIC ANIMATIONS */
+.cursor::after{content:'|';animation:blink 1s infinite;}
+@keyframes blink{50%{opacity:0;}}
+@keyframes fadeOnly{from{opacity:0}to{opacity:1}}
+@keyframes slideFade{from{opacity:0;transform:translateX(-30px)}to{opacity:1;transform:translateX(0)}}
+.hiddenAnim{opacity:0;}
+
 </style>
 </head>
 
@@ -243,9 +251,7 @@ img{
 <section class="section active" id="intro">
     <div class="card">
         <h1 style="font-family:'Comic Neue', cursive;">Hey, My Dabianna </h1>
-        <p style="margin-top:15px;font-family:'Caveat',cursive;font-size:1.5rem;">
-    Do you remember where this story began?
-        </p>
+        <p id="introText" class="cursor" style="margin-top:15px;font-family:'Caveat',cursive;font-size:1.5rem;"></p>
         <button onclick="nextSection('memory1')">Start the story</button>
     </div>
 </section>
@@ -253,7 +259,7 @@ img{
 <!-- MEMORY -->
 <section class="section" id="memory1">
     <div class="card">
-        <h2 style="font-family:'Comic Neue',serif;">This is where everything started</h2>
+        <h2 id="memoryTitle" class="hiddenAnim" style="font-family:'Comic Neue',serif;">This is where everything started</h2>
         <img src="images/image1.jpg" alt="photo">
        <p
     id="memoryText"
@@ -380,10 +386,10 @@ img{
 <!-- FINAL -->
 <section class="section" id="final">
     <div class="card">
-        <h1 style="font-family:'Comic Neue',cursive;font-size:1.3rem;">After all that brought us here, one question remains</h1>
-        <img src="images/image141.jpg">
-        <p style="margin:20px 0;font-family:'Caveat',cursive;font-size:1.5rem;">Jobelle Magsino Gabi</p>
-        <h2 style="font-family:'Bookman Old Style',serif; font-size:2.2rem;">Will You Be My Girlfriend? </h2>
+        <h1 id="finalTitle" class="hiddenAnim" style="font-family:'Comic Neue',cursive;font-size:1.3rem;">After all that brought us here, one question remains</h1>
+        <img id="finalImg" class="hiddenAnim" src="images/image141.jpg">
+        <p id="finalName" class="hiddenAnim" style="margin:20px 0;font-family:'Caveat',cursive;font-size:1.5rem;">Jobelle Magsino Gabi</p>
+        <h2 id="finalQuestion" class="hiddenAnim" style="font-family:'Bookman Old Style',serif; font-size:2.2rem;">Will You Be My Girlfriend? </h2>
         <div class="final-buttons">
             <button onclick="yes()">YES ❤️ </button>
             <button id="noBtn">NO 😭</button>
@@ -415,7 +421,10 @@ function nextSection(id){
 
     if(id==="memory1"){
     memoryTypeWriter();
+    document.getElementById('memoryTitle').style.animation='fadeOnly 2s forwards';
 }
+
+    if(id==="final"){animateFinal();}
 
     if(id==="gallery"){
 
@@ -431,6 +440,28 @@ function nextSection(id){
         },2000);
 
     }
+}
+
+
+const introMsg="Do you remember where this story began?";
+function playIntroTyping(){
+ let el=document.getElementById('introText'); if(!el) return;
+ let n=0; el.innerHTML='';
+ let t=setInterval(()=>{ if(n<introMsg.length){el.innerHTML+=introMsg[n++]} else clearInterval(t);},60);
+}
+playIntroTyping();
+
+function animateFinal(){
+ const t=document.getElementById('finalTitle');
+ const n=document.getElementById('finalName');
+ const i=document.getElementById('finalImg');
+ const q=document.getElementById('finalQuestion');
+ t.style.animation='fadeOnly 2s forwards';
+ setTimeout(()=>{n.style.animation='fadeOnly 2s forwards';},2000);
+ setTimeout(()=>{
+   i.style.animation='fadeOnly 2s forwards';
+   q.style.animation='fadeOnly 2s forwards';
+ },4000);
 }
 
 function wrong(){ document.getElementById("message").innerText="Not this one 😜 Try again!"; }
