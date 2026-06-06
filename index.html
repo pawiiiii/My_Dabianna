@@ -512,34 +512,102 @@ function memoryTypeWriter(){
 
 }
 function yes(){
-    document.body.innerHTML=`
-    <div style="
-        display:flex;
-        justify-content:center;
-        align-items:center;
-        height:100vh;
-        background:url('images/image152.jpg') center center/cover no-repeat;
-        color:white;
-        flex-direction:column;
-        text-align:center;
-        position:relative;
-    ">
-    
-        <div style="
-            position:absolute;
-            inset:0;
-            background:rgba(0,0,0,0.45);
-        "></div>
 
-        <div style="
-            position:relative;
-            z-index:1;
-        ">
-            <h1 style="font-size:3rem;">AAAAAAAAAA ❤️❤️❤️</h1>
-            <h2>You Just Made Me The Happiest Person Alive 😭</h2>
-        </div>
+document.body.innerHTML = `
 
-    </div>`;
+<canvas id="fireworks"></canvas>
+
+<div class="yes-container">
+
+    <h1 class="title">SHE SAID YES ❤️</h1>
+
+    <p class="subtitle">From this moment... it's always us.</p>
+
+    <h2 class="quote">“Some stories don’t end. They just begin.”</h2>
+
+</div>
+
+<style>
+
+body{
+    margin:0;
+    overflow:hidden;
+    background:url('images/image152.jpg') center/cover no-repeat;
+    font-family:'Poppins',sans-serif;
+}
+
+/* dark overlay */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.55);
+}
+
+/* center text */
+.yes-container{
+    position:relative;
+    z-index:2;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+    padding:20px;
+}
+
+/* main title */
+.title{
+    font-size:3rem;
+    font-family:'Comic Neue', cursive;
+    animation: popIn 1s ease;
+    text-shadow:0 0 20px #ff4d8d;
+}
+
+/* subtitle */
+.subtitle{
+    font-size:1.2rem;
+    margin-top:10px;
+    opacity:0.9;
+    animation: fadeIn 2s ease;
+}
+
+/* quote */
+.quote{
+    margin-top:25px;
+    font-family:'Caveat', cursive;
+    font-size:1.8rem;
+    color:#ffd1e8;
+    animation: fadeIn 3s ease;
+}
+
+/* animations */
+@keyframes popIn{
+    from{transform:scale(0.5);opacity:0;}
+    to{transform:scale(1);opacity:1;}
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(20px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+/* fireworks canvas */
+#fireworks{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:1;
+}
+
+</style>
+`;
+
+startFireworks();
 }
 
 const noBtn=document.getElementById("noBtn");
@@ -557,6 +625,53 @@ function openModal(img,text){
 
 function closeModal(){
     document.getElementById("modal").style.display="none";
+}
+function startFireworks(){
+const canvas = document.getElementById("fireworks");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles = [];
+
+function createFirework(){
+    const x = Math.random() * canvas.width;
+    const y = Math.random() * canvas.height / 2;
+
+    for(let i=0;i<60;i++){
+        particles.push({
+            x:x,
+            y:y,
+            speedX:(Math.random()-0.5)*6,
+            speedY:(Math.random()-0.5)*6,
+            alpha:1
+        });
+    }
+}
+
+function animate(){
+    ctx.fillStyle = "rgba(0,0,0,0.15)";
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+
+    particles.forEach((p,i)=>{
+        p.x += p.speedX;
+        p.y += p.speedY;
+        p.alpha -= 0.015;
+
+        ctx.fillStyle = `rgba(255,77,141,${p.alpha})`;
+        ctx.fillRect(p.x,p.y,3,3);
+
+        if(p.alpha <= 0){
+            particles.splice(i,1);
+        }
+    });
+
+    requestAnimationFrame(animate);
+}
+
+setInterval(createFirework, 800);
+animate();
 }
 </script>
 
