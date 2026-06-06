@@ -626,7 +626,7 @@ function openModal(img,text){
 function closeModal(){
     document.getElementById("modal").style.display="none";
 }
-    function startFireworks(){
+function startFireworks(){
 const canvas = document.getElementById("fireworks");
 const ctx = canvas.getContext("2d");
 
@@ -635,42 +635,74 @@ canvas.height = window.innerHeight;
 
 let particles = [];
 
-function createFirework(){
-    const x = Math.random() * canvas.width;
-    const y = Math.random() * canvas.height / 2;
+const colors = [
+    "#ff4d8d", // pink
+    "#ffcc00", // yellow
+    "#00e5ff", // cyan
+    "#b388ff", // purple
+    "#69f0ae", // green
+    "#ff5252", // red
+    "#ffffff"  // white sparkle
+];
 
-    for(let i=0;i<60;i++){
+function createFirework(){
+
+    const x = Math.random() * canvas.width;
+    const y = Math.random() * canvas.height * 0.5;
+
+    const color = colors[Math.floor(Math.random() * colors.length)];
+
+    // MORE PARTICLES = MORE BOOM 💥
+    const count = 90;
+
+    for(let i=0;i<count;i++){
+        const angle = Math.random() * Math.PI * 2;
+        const speed = Math.random() * 6;
+
         particles.push({
-            x:x,
-            y:y,
-            speedX:(Math.random()-0.5)*6,
-            speedY:(Math.random()-0.5)*6,
-            alpha:1
+            x: x,
+            y: y,
+            speedX: Math.cos(angle) * speed,
+            speedY: Math.sin(angle) * speed,
+            alpha: 1,
+            color: color,
+            size: Math.random() * 3 + 1
         });
     }
 }
 
 function animate(){
-    ctx.fillStyle = "rgba(0,0,0,0.15)";
+
+    ctx.fillStyle = "rgba(0,0,0,0.12)";
     ctx.fillRect(0,0,canvas.width,canvas.height);
 
-    particles.forEach((p,i)=>{
+    for(let i=0;i<particles.length;i++){
+        let p = particles[i];
+
         p.x += p.speedX;
         p.y += p.speedY;
-        p.alpha -= 0.015;
+        p.alpha -= 0.012;
 
-        ctx.fillStyle = `rgba(255,77,141,${p.alpha})`;
-        ctx.fillRect(p.x,p.y,3,3);
+        ctx.fillStyle = p.color.replace(")", `,${p.alpha})`).replace("rgb", "rgba");
+
+        // glow effect
+        ctx.shadowBlur = 15;
+        ctx.shadowColor = p.color;
+
+        ctx.fillRect(p.x,p.y,p.size,p.size);
 
         if(p.alpha <= 0){
             particles.splice(i,1);
+            i--;
         }
-    });
+    }
 
     requestAnimationFrame(animate);
 }
 
-setInterval(createFirework, 800);
+// MORE FREQUENT FIREWORKS 💥
+setInterval(createFirework, 400);
+
 animate();
 }
 </script>
