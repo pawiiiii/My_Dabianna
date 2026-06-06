@@ -431,13 +431,13 @@ function nextSection(id){
         const title=document.getElementById("galleryTitle");
         const text=document.getElementById("galleryText");
 
-        title.style.animation="fadeInOnly 2s forwards";
+        title.style.animation="fadeInOnly 4s forwards";
 
         setTimeout(()=>{
 
-            text.style.animation="slideText 1.5s forwards";
+            text.style.animation="slideText 1s forwards";
 
-        },2000);
+        },4000);
 
     }
 }
@@ -447,7 +447,7 @@ const introMsg="Do you remember where this story began?";
 function playIntroTyping(){
  let el=document.getElementById('introText'); if(!el) return;
  let n=0; el.innerHTML='';
- let t=setInterval(()=>{ if(n<introMsg.length){el.innerHTML+=introMsg[n++]} else clearInterval(t);},60);
+ let t=setInterval(()=>{ if(n<introMsg.length){el.innerHTML+=introMsg[n++]} else clearInterval(t);},400);
 }
 playIntroTyping();
 
