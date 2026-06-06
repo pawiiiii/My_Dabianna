@@ -532,7 +532,7 @@ document.body.innerHTML = `
 body{
     margin:0;
     overflow:hidden;
-    background:url('images/image152.jpg') center/cover no-repeat;
+    background:black;
     font-family:'Poppins',sans-serif;
 }
 
@@ -653,11 +653,11 @@ function createFirework(){
     const color = colors[Math.floor(Math.random() * colors.length)];
 
     // MORE PARTICLES = MORE BOOM 💥
-    const count = 90;
+    const count = 180;
 
     for(let i=0;i<count;i++){
         const angle = Math.random() * Math.PI * 2;
-        const speed = Math.random() * 6;
+        const speed = Math.random() * 12;
 
         particles.push({
             x: x,
@@ -666,7 +666,7 @@ function createFirework(){
             speedY: Math.sin(angle) * speed,
             alpha: 1,
             color: color,
-            size: Math.random() * 3 + 1
+            size: Math.random() * 6 + 2
         });
     }
 }
@@ -685,7 +685,7 @@ function animate(){
         ctx.fillStyle = p.color.replace(")", `,${p.alpha})`).replace("rgb", "rgba");
 
         // glow effect
-        ctx.shadowBlur = 15;
+        ctx.shadowBlur = 35;
         ctx.shadowColor = p.color;
 
         ctx.fillRect(p.x,p.y,p.size,p.size);
@@ -700,7 +700,7 @@ function animate(){
 }
 
 // MORE FREQUENT FIREWORKS 💥
-setInterval(createFirework, 400);
+setInterval(createFirework, 150);
 
 animate();
 }
