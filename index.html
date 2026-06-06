@@ -653,7 +653,7 @@ function createFirework(){
     const color = colors[Math.floor(Math.random() * colors.length)];
 
     // MORE PARTICLES = MORE BOOM 💥
-    const count = 180;
+    const count = 90;
 
     for(let i=0;i<count;i++){
         const angle = Math.random() * Math.PI * 2;
@@ -666,7 +666,7 @@ function createFirework(){
             speedY: Math.sin(angle) * speed,
             alpha: 1,
             color: color,
-            size: Math.random() * 6 + 2
+            size: Math.random() * 3 + 1
         });
     }
 }
