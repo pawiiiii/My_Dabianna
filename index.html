@@ -382,7 +382,34 @@ function typeWriter(){
 }
 
 function yes(){
-    document.body.innerHTML=`<div style="display:flex;justify-content:center;align-items:center;height:100vh;background:#0f172a;color:white;flex-direction:column;text-align:center;"><h1>AAAAAAAAAA ❤️❤️❤️</h1><h2>You Just Made Me The Happiest Person Alive 😭</h2></div>`;
+    document.body.innerHTML=`
+    <div style="
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        height:100vh;
+        background:url('images/image152.jpg') center center/cover no-repeat;
+        color:white;
+        flex-direction:column;
+        text-align:center;
+        position:relative;
+    ">
+    
+        <div style="
+            position:absolute;
+            inset:0;
+            background:rgba(0,0,0,0.45);
+        "></div>
+
+        <div style="
+            position:relative;
+            z-index:1;
+        ">
+            <h1 style="font-size:3rem;">AAAAAAAAAA ❤️❤️❤️</h1>
+            <h2>You Just Made Me The Happiest Person Alive 😭</h2>
+        </div>
+
+    </div>`;
 }
 
 const noBtn=document.getElementById("noBtn");
