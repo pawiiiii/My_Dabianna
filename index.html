@@ -505,7 +505,11 @@ function nextSection(id){
     document.querySelectorAll(".section").forEach(sec=>sec.classList.remove("active"));
 
     document.getElementById(id).classList.add("active");
-
+if(id==="intro"){
+    setTimeout(() => {
+        playIntroTyping();
+    }, 500);
+}
     if(id==="memory1"){
     memoryTypeWriter();
     document.getElementById('memoryTitle').style.animation='fadeOnly 2s forwards';
@@ -531,11 +535,21 @@ if(id==="gallery"){
 
 const introMsg="Do you remember where this story began?";
 function playIntroTyping(){
- let el=document.getElementById('introText'); if(!el) return;
- let n=0; el.innerHTML='';
- let t=setInterval(()=>{ if(n<introMsg.length){el.innerHTML+=introMsg[n++]} else clearInterval(t);},60);
+ let el=document.getElementById('introText'); 
+ if(!el) return;
+
+ el.innerHTML = ""; // reset
+
+ let n=0;
+
+ let t=setInterval(()=>{
+   if(n<introMsg.length){
+     el.innerHTML += introMsg[n++];
+   } else {
+     clearInterval(t);
+   }
+ },60);
 }
-playIntroTyping();
 
 function animateFinal(){
  const t=document.getElementById('finalTitle');
