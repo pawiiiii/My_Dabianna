@@ -299,6 +299,50 @@ img{
     }
 
 }
+    #bigEnvelope{
+    font-size:90px;
+    cursor:pointer;
+    transition:0.6s;
+}
+
+.envelopeOpen{
+    transform:scale(1.4) rotate(-10deg);
+}
+
+#paperContent{
+    max-height:0;
+    overflow:hidden;
+    opacity:0;
+    transform:translateY(20px);
+    transition:all 1s ease;
+}
+
+.paperOpen{
+    max-height:700px;
+    opacity:1;
+    transform:translateY(0);
+}
+
+.letterPaper::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:repeating-linear-gradient(
+        0deg,
+        rgba(0,0,0,.02),
+        rgba(0,0,0,.02) 2px,
+        transparent 2px,
+        transparent 6px
+    );
+    pointer-events:none;
+}
+
+@keyframes foldClose{
+    from{transform:scaleY(1);opacity:1;}
+    to{transform:scaleY(0);opacity:0;}
+}
+
+
 </style>
 </head>
 
@@ -850,97 +894,7 @@ setInterval(createFirework, 400);
 
 animate();
 }
-    #bigEnvelope{
 
-    font-size:90px;
-
-    cursor:pointer;
-
-    transition:.6s;
-
-}
-
-.envelopeOpen{
-
-    transform:scale(1.4);
-
-}
-
-#paperContent{
-
-    max-height:0;
-
-    overflow:hidden;
-
-    opacity:0;
-
-    transition:all 1s ease;
-
-}
-
-.paperOpen{
-
-    max-height:700px;
-
-    opacity:1;
-
-}
-
-.letterPaper{
-
-    background:#f3efe6;
-
-    color:#2d2d2d;
-
-    border-radius:8px;
-
-    position:relative;
-
-}
-
-/* old paper effect */
-
-.letterPaper::before{
-
-    content:"";
-
-    position:absolute;
-
-    inset:0;
-
-    background:
-    repeating-linear-gradient(
-        0deg,
-        rgba(0,0,0,.02),
-        rgba(0,0,0,.02) 2px,
-        transparent 2px,
-        transparent 6px
-    );
-
-    pointer-events:none;
-
-}
-
-@keyframes foldClose{
-
-    from{
-
-        transform:scaleY(1);
-
-        opacity:1;
-
-    }
-
-    to{
-
-        transform:scaleY(0);
-
-        opacity:0;
-
-    }
-
-}
 </script>
-
 </body>
 </html>
