@@ -253,7 +253,8 @@ img{
 }
 
 .letterPaper{
-
+    overflow:hidden;
+    position:relative;
     width:90%;
     max-width:400px;
 
@@ -431,15 +432,6 @@ img{
     </div>
 </section>
 
-<!-- LETTER -->
-<section class="section" id="letter">
-    <div class="card">
-        <h2 style="font-family:'Caveat',cursive;font-size:2.2rem;">Hi my Jobi </h2>
-        <p id="typewriter"></p>
-        <button onclick="nextSection('final')">Continue</button>
-    </div>
-</section>
-
 <!-- FINAL -->
 <section class="section" id="final">
     <div class="card">
@@ -465,23 +457,26 @@ img{
 
     <div class="letterPaper">
 
-        <h2>💌</h2>
+        <div id="bigEnvelope">
+            💌
+        </div>
 
-        <p id="specialLetterText">
+        <div id="paperContent">
 
-            Hi my Jobi,
+            <h2 style="margin-bottom:15px;">
+                Hi my Jobi ❤️
+            </h2>
 
-            Thank you for every smile, every conversation, every memory we've shared.
+            <p id="specialLetterText"></p>
 
-            Every day with you has become one of my favorite days.
+            <button
+            id="paperContinue"
+            onclick="openRealLetter()"
+            style="display:none;">
+                Continue ❤️
+            </button>
 
-            Before this journey ends, there's something I've wanted to ask you...
-
-        </p>
-
-        <button onclick="openRealLetter()">
-            Open My Letter ❤️
-        </button>
+        </div>
 
     </div>
 
@@ -549,19 +544,79 @@ function animateFinal(){
 function wrong(){ document.getElementById("message").innerText="Not this one 😜 Try again!"; }
 function openRealLetter(){
 
-    document.getElementById("letterPopup").style.display="none";
+    const paper = document.querySelector(".letterPaper");
 
-    nextSection("letter");
+    paper.style.animation = "foldClose 1s forwards";
 
-    typeWriter();
+    setTimeout(()=>{
+
+        document.getElementById("letterPopup").style.display="none";
+
+        nextSection("final");
+
+    },1000);
 
 }
 function correct(){
 
     document.getElementById("letterPopup").style.display="flex";
 
-}
+    setTimeout(()=>{
 
+        document.getElementById("bigEnvelope")
+        .classList.add("envelopeOpen");
+
+    },500);
+
+    setTimeout(()=>{
+
+        document.getElementById("paperContent")
+        .classList.add("paperOpen");
+
+        startLetterTyping();
+
+    },1200);
+
+}
+const specialMessage =
+`Thank you for every smile, every conversation, every memory we've shared.
+
+Every day with you has become one of my favorite days.
+
+Before this journey ends, there's something I've wanted to ask you...`;
+
+function startLetterTyping(){
+
+    const el =
+    document.getElementById("specialLetterText");
+
+    el.innerHTML="";
+
+    let index=0;
+
+    const typing = setInterval(()=>{
+
+        if(index < specialMessage.length){
+
+            el.innerHTML += specialMessage.charAt(index);
+
+            index++;
+
+        }
+
+        else{
+
+            clearInterval(typing);
+
+            document.getElementById(
+            "paperContinue"
+            ).style.display="inline-block";
+
+        }
+
+    },40);
+
+}
 const text="Thank you for every smile, every conversation, every memory we've shared. Every day with you has become one of my favorite days. Before this journey ends, there's something I've wanted to ask you...";
 const memoryMessage =
 "It's funny how God answers prayers in ways we never expect.";
@@ -794,6 +849,96 @@ function animate(){
 setInterval(createFirework, 400);
 
 animate();
+}
+    #bigEnvelope{
+
+    font-size:90px;
+
+    cursor:pointer;
+
+    transition:.6s;
+
+}
+
+.envelopeOpen{
+
+    transform:scale(1.4);
+
+}
+
+#paperContent{
+
+    max-height:0;
+
+    overflow:hidden;
+
+    opacity:0;
+
+    transition:all 1s ease;
+
+}
+
+.paperOpen{
+
+    max-height:700px;
+
+    opacity:1;
+
+}
+
+.letterPaper{
+
+    background:#f3efe6;
+
+    color:#2d2d2d;
+
+    border-radius:8px;
+
+    position:relative;
+
+}
+
+/* old paper effect */
+
+.letterPaper::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+    repeating-linear-gradient(
+        0deg,
+        rgba(0,0,0,.02),
+        rgba(0,0,0,.02) 2px,
+        transparent 2px,
+        transparent 6px
+    );
+
+    pointer-events:none;
+
+}
+
+@keyframes foldClose{
+
+    from{
+
+        transform:scaleY(1);
+
+        opacity:1;
+
+    }
+
+    to{
+
+        transform:scaleY(0);
+
+        opacity:0;
+
+    }
+
 }
 </script>
 
