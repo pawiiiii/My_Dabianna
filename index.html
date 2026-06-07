@@ -220,15 +220,13 @@ img{
     }
 }
 
-@keyframes slideText{
+@keyframes textFadeIn{
     from{
         opacity:0;
-        transform:translateX(-50px);
     }
 
     to{
         opacity:1;
-        transform:translateX(0);
     }
 }
 
@@ -282,7 +280,6 @@ img{
         font-family:'Caveat',cursive;
         font-size:1.3rem;
         opacity:0;
-        transform:translateX(-50px);
         ">
             A simple reply that turned into memories I'll carry with me for the rest of my life.
         </p>
@@ -426,20 +423,19 @@ function nextSection(id){
 
     if(id==="final"){animateFinal();}
 
-    if(id==="gallery"){
+if(id==="gallery"){
 
-        const title=document.getElementById("galleryTitle");
-        const text=document.getElementById("galleryText");
+    const title=document.getElementById("galleryTitle");
+    const text=document.getElementById("galleryText");
 
-        title.style.animation="fadeInOnly 2s forwards";
+    title.style.animation="fadeInOnly 2s forwards";
 
-        setTimeout(()=>{
+    setTimeout(()=>{
 
-            text.style.animation="slideText 1.5s forwards";
+        text.style.animation="textFadeIn 2s forwards";
 
-        },2000);
+    },2000);
 
-    }
 }
 
 
