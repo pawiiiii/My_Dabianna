@@ -237,7 +237,67 @@ img{
 @keyframes fadeOnly{from{opacity:0}to{opacity:1}}
 @keyframes slideFade{from{opacity:0;transform:translateX(-30px)}to{opacity:1;transform:translateX(0)}}
 .hiddenAnim{opacity:0;}
+/* LETTER PAPER POPUP */
 
+#letterPopup{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.75);
+
+    display:none;
+
+    justify-content:center;
+    align-items:center;
+
+    z-index:9999;
+}
+
+.letterPaper{
+
+    width:90%;
+    max-width:400px;
+
+    background:#f5f3ee;
+
+    color:#333;
+
+    padding:30px;
+
+    border-radius:15px;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.5);
+
+    text-align:center;
+
+    animation:paperRise 0.8s ease;
+}
+
+.letterPaper p{
+
+    color:#444;
+
+    line-height:1.8;
+
+    margin:20px 0;
+
+    font-family:'Caveat',cursive;
+
+    font-size:1.5rem;
+}
+
+@keyframes paperRise{
+
+    from{
+        opacity:0;
+        transform:translateY(100px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
 </style>
 </head>
 
@@ -399,7 +459,33 @@ img{
     <img id="modalImg">
     <p id="modalText"></p>
 </div>
+<!-- SPECIAL LETTER POPUP -->
 
+<div id="letterPopup">
+
+    <div class="letterPaper">
+
+        <h2>💌</h2>
+
+        <p id="specialLetterText">
+
+            Hi my Jobi,
+
+            Thank you for every smile, every conversation, every memory we've shared.
+
+            Every day with you has become one of my favorite days.
+
+            Before this journey ends, there's something I've wanted to ask you...
+
+        </p>
+
+        <button onclick="openRealLetter()">
+            Open My Letter ❤️
+        </button>
+
+    </div>
+
+</div>
 <script>
 // unchanged JS
 for(let i=0;i<120;i++){
@@ -461,10 +547,19 @@ function animateFinal(){
 }
 
 function wrong(){ document.getElementById("message").innerText="Not this one 😜 Try again!"; }
+function openRealLetter(){
 
+    document.getElementById("letterPopup").style.display="none";
+
+    nextSection("letter");
+
+    typeWriter();
+
+}
 function correct(){
-    document.getElementById("message").innerText="You found it! ";
-    setTimeout(()=>{ nextSection("letter"); typeWriter(); },1000);
+
+    document.getElementById("letterPopup").style.display="flex";
+
 }
 
 const text="Thank you for every smile, every conversation, every memory we've shared. Every day with you has become one of my favorite days. Before this journey ends, there's something I've wanted to ask you...";
