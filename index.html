@@ -550,16 +550,16 @@ function animateFinal(){
  },6000);
 }
 
-function wrong(){ document.getElementById("message").innerText="Not this one 😜 Try again!"; }
+function wrong(){ document.getElementById("message").innerText="Wrong ka ulit sis, try again!"; }
 
 function correct(){
-    document.getElementById("message").innerText="You found it! ";
+    document.getElementById("message").innerText="You found it! galing talaga! ";
     setTimeout(()=>{ nextSection("letter"); typeWriter(); },1000);
 }
 
 const text="Thank you for every smile, every conversation, every memory we've shared. Every day with you has become one of my favorite days. Before this journey ends, there's something I've wanted to ask you...";
 const memoryMessage =
-"It's funny how God answers prayers in ways we never expect.";
+"It's funny how God answers prayers in ways we never expect, royt?.";
 let i=0;
 function typeWriter(){
     const el=document.getElementById("typewriter");
