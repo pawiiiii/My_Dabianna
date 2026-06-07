@@ -242,11 +242,26 @@ img{
 </head>
 
 <body>
+<!-- LOCK SCREEN -->
+<div id="lockScreen" class="section active">
+    <div class="card">
+        <h2>🔐 Enter the Secret Code</h2>
+        <p>Stop when the numbers match ❤️</p>
 
+        <div style="font-size:2rem; margin:20px 0;" id="rollingText">
+            0 / 0 / 0
+        </div>
+
+        <button onclick="startRoll()">Start Roll</button>
+        <button onclick="checkCode()">Unlock</button>
+
+        <p id="lockMsg"></p>
+    </div>
+</div>
 <div class="stars" id="stars"></div>
 
 <!-- INTRO -->
-<section class="section active" id="intro">
+<section class="section" id="intro">
     <div class="card">
         <h1 style="font-family:'Comic Neue', cursive;">Hey, My Dabianna </h1>
         <p id="introText" class="cursor" style="margin-top:15px;font-family:'Caveat',cursive;font-size:1.5rem;"></p>
@@ -401,6 +416,9 @@ img{
 </div>
 
 <script>
+let targetCode = "6 / 11 / 24";
+let currentCode = "0 / 0 / 0";
+let rolling = false;
 // unchanged JS
 for(let i=0;i<120;i++){
     let star=document.createElement("div");
@@ -410,6 +428,29 @@ for(let i=0;i<120;i++){
     document.getElementById("stars").appendChild(star);
 }
 
+function startRoll(){
+    const el = document.getElementById("rollingText");
+    const msg = document.getElementById("lockMsg");
+
+    msg.innerText = "Rolling... 🎰";
+
+    let interval = setInterval(() => {
+
+        let d1 = Math.floor(Math.random() * 9) + 1;
+        let d2 = Math.floor(Math.random() * 12) + 1;
+        let d3 = Math.floor(Math.random() * 31) + 1;
+
+        currentCode = `${d1} / ${d2} / ${d3}`;
+        el.innerText = currentCode;
+
+    }, 100);
+
+    setTimeout(() => {
+        clearInterval(interval);
+        msg.innerText = "Stop and check the code 👀";
+    }, 3000);
+}
+    
 function nextSection(id){
 
     document.querySelectorAll(".section").forEach(sec=>sec.classList.remove("active"));
@@ -612,7 +653,21 @@ noBtn.addEventListener("mouseover",()=>{
     const y=Math.random()*200-100;
     noBtn.style.transform=`translate(${x}px, ${y}px)`;
 });
+function checkCode(){
+    const msg = document.getElementById("lockMsg");
 
+    if(currentCode === targetCode){
+        msg.innerText = "Unlocked ❤️";
+
+        setTimeout(() => {
+            document.getElementById("lockScreen").classList.remove("active");
+            nextSection("intro");
+        }, 1000);
+
+    } else {
+        msg.innerText = "Wrong code 😭 try again";
+    }
+}
 function openModal(img,text){
     document.getElementById("modal").style.display="flex";
     document.getElementById("modalImg").src=img;
