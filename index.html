@@ -237,6 +237,73 @@ img{
 @keyframes fadeOnly{from{opacity:0}to{opacity:1}}
 @keyframes slideFade{from{opacity:0;transform:translateX(-30px)}to{opacity:1;transform:translateX(0)}}
 .hiddenAnim{opacity:0;}
+/* LOCK SCREEN STYLING */
+.lockCard{
+    text-align:center;
+    padding:30px 20px;
+    backdrop-filter:blur(16px);
+    background:rgba(255,255,255,0.06);
+    border-radius:20px;
+    box-shadow:0 0 40px rgba(0,0,0,0.4);
+}
+
+/* TITLE */
+.lockTitle{
+    font-family:'Comic Neue', cursive;
+    font-size:1.8rem;
+    margin-bottom:8px;
+    letter-spacing:1px;
+}
+
+/* SUBTITLE */
+.lockSub{
+    font-family:'Poppins', sans-serif;
+    font-size:0.9rem;
+    opacity:0.7;
+    margin-bottom:20px;
+}
+
+/* INPUT BOX */
+.lockInput{
+    width:80%;
+    padding:12px;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,0.2);
+    background:rgba(255,255,255,0.08);
+    color:white;
+    text-align:center;
+    font-size:1.2rem;
+    outline:none;
+    backdrop-filter:blur(10px);
+    box-shadow:0 0 15px rgba(255,77,141,0.15);
+    transition:0.3s;
+}
+
+.lockInput:focus{
+    border-color:#ff4d8d;
+    box-shadow:0 0 20px rgba(255,77,141,0.4);
+    transform:scale(1.03);
+}
+
+/* BUTTON */
+.lockBtn{
+    margin-top:15px;
+    padding:12px 25px;
+    border:none;
+    border-radius:30px;
+    cursor:pointer;
+    background:linear-gradient(135deg,#ff4d8d,#ff7aa2);
+    color:white;
+    font-size:1rem;
+    font-family:'Quicksand', sans-serif;
+    box-shadow:0 8px 20px rgba(255,77,141,0.3);
+    transition:0.3s;
+}
+
+.lockBtn:hover{
+    transform:scale(1.07);
+    box-shadow:0 10px 25px rgba(255,77,141,0.5);
+}
 
 </style>
 </head>
@@ -244,16 +311,19 @@ img{
 <body>
 <!-- LOCK SCREEN -->
 <div id="lockScreen" class="section active">
-    <div class="card">
+    <div class="card lockCard">
+
+        <h2 class="lockTitle">Enter Password</h2>
+        <p class="lockSub">Only the right memory can open this </p>
 
         <input 
             id="codeInput"
             maxlength="5"
-            placeholder="Enter code"
-            style="padding:12px; font-size:1.2rem; text-align:center; border-radius:10px;"
+            placeholder="•••••"
+            class="lockInput"
         />
 
-        <button onclick="checkCode()">Unlock</button>
+        <button class="lockBtn" onclick="checkCode()">Unlock</button>
 
         <p id="lockMsg"></p>
 
