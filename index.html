@@ -248,9 +248,16 @@ img{
         <h2>🔐 Enter the Secret Code</h2>
         <p>Stop when the numbers match ❤️</p>
 
-        <div style="font-size:2rem; margin:20px 0;" id="rollingText">
-            0 / 0 / 0
-        </div>
+<div id="slotDisplay" style="font-size:2.5rem; letter-spacing:10px; margin:20px 0;">
+    0 0 0 0 0
+</div>
+
+<input 
+    id="codeInput"
+    maxlength="5"
+    placeholder="Enter code"
+    style="padding:10px; font-size:1.2rem; text-align:center; border-radius:10px;"
+/>
 
         <button onclick="startRoll()">Start Roll</button>
         <button onclick="checkCode()">Unlock</button>
@@ -429,26 +436,32 @@ for(let i=0;i<120;i++){
 }
 
 function startRoll(){
-    const el = document.getElementById("rollingText");
-    const msg = document.getElementById("lockMsg");
+    const display = document.getElementById("slotDisplay");
+    const input = document.getElementById("codeInput");
 
-    msg.innerText = "Rolling... 🎰";
+    let count = 0;
 
     let interval = setInterval(() => {
 
-        let d1 = Math.floor(Math.random() * 9) + 1;
-        let d2 = Math.floor(Math.random() * 12) + 1;
-        let d3 = Math.floor(Math.random() * 31) + 1;
+        let fake = "";
 
-        currentCode = `${d1} / ${d2} / ${d3}`;
-        el.innerText = currentCode;
+        for(let i=0;i<5;i++){
+            fake += Math.floor(Math.random() * 10) + " ";
+        }
 
-    }, 100);
+        display.innerText = fake;
 
-    setTimeout(() => {
-        clearInterval(interval);
-        msg.innerText = "Stop and check the code 👀";
-    }, 3000);
+        count++;
+
+        if(count > 20){
+            clearInterval(interval);
+
+            // show actual user input in slot style
+            let val = input.value || "00000";
+            display.innerText = val.split("").join(" ");
+        }
+
+    }, 80);
 }
     
 function nextSection(id){
@@ -653,10 +666,13 @@ noBtn.addEventListener("mouseover",()=>{
     const y=Math.random()*200-100;
     noBtn.style.transform=`translate(${x}px, ${y}px)`;
 });
+const correctPassword = "61126";
+
 function checkCode(){
+    const input = document.getElementById("codeInput").value;
     const msg = document.getElementById("lockMsg");
 
-    if(currentCode === targetCode){
+    if(input === correctPassword){
         msg.innerText = "Unlocked ❤️";
 
         setTimeout(() => {
