@@ -337,6 +337,9 @@ img{
     margin-top: 15px;
     flex-shrink: 0;
 }
+ #final{
+    position:relative;
+}
 </style>
 </head>
 
@@ -510,7 +513,19 @@ img{
 <!-- FINAL -->
 <section class="section" id="final">
     <div class="card">
-        <h1 id="finalTitle" class="hiddenAnim" style="font-family:'Comic Neue',cursive;font-size:1.0rem;">All of this leads me to one thing I’ve been wanting to ask you...</h1>
+        <h1 id="finalTitle" class="hiddenAnim"
+style="
+font-family:'Comic Neue',cursive;
+font-size:1.0rem;
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%, -50%);
+text-align:center;
+width:90%;
+">
+All of this leads me to one thing I’ve been wanting to ask you...
+</h1>
         <img id="finalImg" class="hiddenAnim" src="images/image141.jpg">
         <p id="finalName" class="hiddenAnim" style="opacity:0;margin:20px 0;font-family:'Caveat',cursive;font-size:1.7rem;">Jobelle Magsino Gabi</p>
 <h2 id="finalQuestion" class="hiddenAnim"
