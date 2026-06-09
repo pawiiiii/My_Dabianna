@@ -512,7 +512,7 @@ img{
     <div class="card">
         <h1 id="finalTitle" class="hiddenAnim" style="font-family:'Comic Neue',cursive;font-size:1.0rem;">All of this leads me to one thing I’ve been wanting to ask you...</h1>
         <img id="finalImg" class="hiddenAnim" src="images/image141.jpg">
-        <p id="finalName" class="hiddenAnim" style="margin:20px 0;font-family:'Caveat',cursive;font-size:1.7rem;">Jobelle Magsino Gabi</p>
+        <p id="finalName" class="hiddenAnim" style="opacity:0;margin:20px 0;font-family:'Caveat',cursive;font-size:1.7rem;">Jobelle Magsino Gabi</p>
 <h2 id="finalQuestion" class="hiddenAnim"
     style="
     font-family:'Clicker Script', cursive;
@@ -603,16 +603,38 @@ function playIntroTyping(){
 }
 
 function animateFinal(){
- const t=document.getElementById('finalTitle');
- const n=document.getElementById('finalName');
- const i=document.getElementById('finalImg');
- const q=document.getElementById('finalQuestion');
- t.style.animation='fadeOnly 3s forwards';
- setTimeout(()=>{n.style.animation='fadeOnly 2s forwards';},3000);
+
+ const line1 = document.getElementById('finalTitle');
+ const name = document.getElementById('finalName');
+ const img = document.getElementById('finalImg');
+ const question = document.getElementById('finalQuestion');
+
+ // RESET OPACITY FIRST
+ line1.style.opacity = 0;
+ name.style.opacity = 0;
+ img.style.opacity = 0;
+ question.style.opacity = 0;
+
+ // STEP 1: First message (2 sec delay, fade in 1s, stay 5s, fade out 1s)
  setTimeout(()=>{
-   i.style.animation='fadeOnly 3s forwards';
-   q.style.animation='fadeOnly 3s forwards';
- },6000);
+   line1.style.animation = "fadeOnly 1s forwards";
+ },2000);
+
+ setTimeout(()=>{
+   line1.style.animation = "fadeOnly 1s reverse forwards";
+ },8000); 
+ // (2s delay + 5s display + 1s fade out = 8s)
+
+ // STEP 2: Name appears after fade out + 3 sec delay
+ setTimeout(()=>{
+   name.style.animation = "fadeOnly 2s forwards";
+ },11000);
+
+ // STEP 3: After name appears, show final question + image
+ setTimeout(()=>{
+   img.style.animation = "fadeOnly 2s forwards";
+   question.style.animation = "fadeOnly 2s forwards";
+ },14000);
 }
 
 function wrong(){ document.getElementById("message").innerText="Wrong ka ulit sis, try again!"; }
