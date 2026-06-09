@@ -668,6 +668,27 @@ document.body.innerHTML = `
 </div>
 
 <style>
+/* LETTER SCROLL FIX */
+#letter .card{
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* THIS is the scrollable text area */
+#typewriter{
+    overflow-y: auto;
+    max-height: 55vh;
+    padding: 10px;
+    margin-top: 10px;
+    line-height: 1.6;
+}
+
+/* optional: para di maipit yung button */
+#letter button{
+    margin-top: 15px;
+    flex-shrink: 0;
+}
 
 body{
     margin:0;
