@@ -316,7 +316,27 @@ img{
     transform: scale(1);
   }
 }
+/* LETTER SCROLL FIX */
+.letter-card{
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+}
 
+/* scrollable text */
+#typewriter{
+    max-height: 55vh;
+    overflow-y: auto;
+    padding: 10px;
+    margin-top: 10px;
+    line-height: 1.6;
+}
+
+/* make sure button stays visible */
+#letter button{
+    margin-top: 15px;
+    flex-shrink: 0;
+}
 </style>
 </head>
 
@@ -480,7 +500,7 @@ img{
 
 <!-- LETTER -->
 <section class="section" id="letter">
-    <div class="card">
+    <div class="card letter-card">
         <h2 style="font-family:'Caveat',cursive;font-size:2.2rem;">Hi my Jobi </h2>
         <p id="typewriter"></p>
         <button onclick="nextSection('final')">Continue</button>
@@ -668,27 +688,6 @@ document.body.innerHTML = `
 </div>
 
 <style>
-/* LETTER SCROLL FIX */
-#letter .card{
-    max-height: 80vh;
-    display: flex;
-    flex-direction: column;
-}
-
-/* THIS is the scrollable text area */
-#typewriter{
-    overflow-y: auto;
-    max-height: 55vh;
-    padding: 10px;
-    margin-top: 10px;
-    line-height: 1.6;
-}
-
-/* optional: para di maipit yung button */
-#letter button{
-    margin-top: 15px;
-    flex-shrink: 0;
-}
 
 body{
     margin:0;
