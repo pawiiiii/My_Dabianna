@@ -337,9 +337,6 @@ img{
     margin-top: 15px;
     flex-shrink: 0;
 }
- #final{
-    position:relative;
-}
 </style>
 </head>
 
