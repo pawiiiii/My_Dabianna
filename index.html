@@ -383,8 +383,8 @@ img{
         </p>
         <div class="gallery">
 
-            <div class="memory" onclick="openModal('images/image2.jpg','This was the day I first saw you also a day I prayed for lighter days, for a bit of happiness, to lift the heaviness I was carrying. di ko talaga makakalimutan yung sinabi ni pastor nung araw na to na "pag-labas mo ng kwartong to magiging masaya ka" and it really happened. after a hundred rejections mo sa mga aya ko, pumayag ka rin HAHAHA nakita rin kita. and just like that, everything felt different. It felt like an answered prayer so fast, so unexpected.
- ')">
+            <div class="memory" data-img="images/image2.jpg" data-text="This was the day I first saw you also a day I prayed for lighter days, for a bit of happiness, to lift the heaviness I was carrying. di ko talaga makakalimutan yung sinabi ni pastor nung araw na to na "pag-labas mo ng kwartong to magiging masaya ka" and it really happened. after a hundred rejections mo sa mga aya ko, pumayag ka rin HAHAHA nakita rin kita. and just like that, everything felt different. It felt like an answered prayer so fast, so unexpected.
+">
                 <img src="images/image2.jpg">
                 <p>3 / 8 / 26 </p>
             </div>
@@ -769,6 +769,11 @@ function checkCode(){
     }
 }
 function openModal(img,text){
+    document.querySelectorAll('.memory').forEach(item=>{
+    item.addEventListener('click', ()=>{
+        openModal(item.dataset.img, item.dataset.text);
+    });
+});
     document.getElementById("modal").style.display="flex";
     document.getElementById("modalImg").src=img;
     document.getElementById("modalText").innerText=text;
