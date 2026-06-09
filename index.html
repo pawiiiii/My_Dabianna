@@ -524,10 +524,10 @@ img{
     ">
     Will You Be My Girlfriend?
 </h2>
-        <div class="final-buttons">
-            <button onclick="yes()">YES ❤️ </button>
-            <button id="noBtn">NO 😭</button>
-        </div>
+<div class="final-buttons hiddenAnim" id="finalButtons">
+    <button onclick="yes()">YES ❤️ </button>
+    <button id="noBtn">NO 😭</button>
+</div>
     </div>
 </section>
 
@@ -631,10 +631,11 @@ function animateFinal(){
  },11000);
 
  // STEP 3: After name appears, show final question + image
- setTimeout(()=>{
+setTimeout(()=>{
    img.style.animation = "fadeOnly 2s forwards";
    question.style.animation = "fadeOnly 2s forwards";
- },14000);
+   document.getElementById("finalButtons").style.animation = "fadeOnly 2s forwards";
+},14000);
 }
 
 function wrong(){ document.getElementById("message").innerText="Wrong ka ulit sis, try again!"; }
