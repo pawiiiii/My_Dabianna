@@ -175,6 +175,15 @@ img{
     border-radius:15px;
     box-shadow:0 8px 15px rgba(0,0,0,0.4);
 }
+.clickMe{
+    font-size:0.75rem;
+    color:#ffb6d9;
+    margin-top:4px;
+    font-family:'Poppins', sans-serif;
+    opacity:0.9;
+    animation: pulseClick 1.5s infinite;
+}
+    
 
 /* MODAL */
 #modal{
@@ -214,6 +223,22 @@ img{
 @keyframes pop{
     from{transform:scale(0.98); opacity:0.5;}
     to{transform:scale(1); opacity:1;}
+}
+@keyframes pulseClick{
+    0%{
+        opacity:0.6;
+        transform:scale(1);
+    }
+
+    50%{
+        opacity:1;
+        transform:scale(1.08);
+    }
+
+    100%{
+        opacity:0.6;
+        transform:scale(1);
+    }
 }
     /* GALLERY INTRO */
 
@@ -414,74 +439,87 @@ img{
 ">
                 <img src="images/image2.jpg">
                 <p>3 / 8 / 26 </p>
+                <p class="clickMe">Click me</p>
             </div>
 
             <div class="memory" data-img="images/image3.jpg" data-text="My core memory. For the first time in my life, I felt love in a way I didn’t even know existed. Nagbibiro lang ako nung sinabi kong kantahan mo ako, but alam kong hindi mangyayari kasi i know na hindi ka sanay kumanta sa harap ng maraming tao. But you still did it. Out of all the ways you could’ve shown your love, you were willing to do something unfamiliar to you, as long as it would make me happy.">
                 <img src="images/image3.jpg">
                 <p>5 / 11 / 26 </p>
+                <p class="clickMe">Click me</p>
             </div>
 
             <div class="memory" data-img="images/image131.jpg" data-text="Aww, my baby is crying here. This was the first time I saw your vulnerable side. Thank you mahal, for letting me see those parts of you na hindi lahat ng tao nakikita. At sa mas marami pang luha, problema at victories na haharapin natin ng sabay.
 ">
                 <img src="images/image131.jpg">
                 <p>3 / 22 / 26 </p>
+                <p class="clickMe">Click me</p>
             </div>
 
             <div class="memory" data-img="images/image5.jpg" data-text="Look how happy I am, parang ang gaan ng lahat. A smile I can’t even hide kasi ikaw ba naman ikiss ng isang Jennie Kim eh oh. literal na one kiss is all it takes, basta ikaw HAHAHAHAHA
 ">
                 <img src="images/image5.jpg">
                 <p>5 / 4 / 26 </p>
+                <p class="clickMe">Click me</p>
             </div>
 
             <div class="memory" data-img="images/image6.jpg" data-text="For the first time, someone surprised me on my birthday. I still remember how much effort you put into everything, at hinding hindi ko makakalimutan yon. You were not really good at hiding surprises kasi you are too excited na sabihin sakin kaya i thought alam ko na mangyayari sa buong araw ng birthday ko, but it turns out, that wasn’t even half of what you prepared sa dami ng surprises mo para sakin. And that same day, you asked if you could court me. AAAAAAAAA happiest day evaah!!
 ">
                 <img src="images/image6.jpg">
                 <p>5 / 25 / 26 </p>
+                <p class="clickMe">Click me</p>
             </div>
 
             <div class="memory" data-img="images/image7.jpg" data-text="This was the first time I cried in front of my babyyy. I’ll never forget how comforting that moment felt Kaya this became one of my favorite dates ever. and i feel like here mas nakilala natin ang isa’t isa through everything we talked about. plus and sarap pa ng hangin and ang ganda ng ambience, perfect.
 ">
                 <img src="images/image7.jpg">
                 <p>3 / 15 / 26 </p>
+                <p class="clickMe">Click me</p>
             </div>
 
             <div class="memory" data-img="images/image8.jpg" data-text="Guess who ang mugto ang mata kasi umiyak? Walang winner tonight kasi pareho tayong umiyak HAHAHAHA. Thank you for always choosing to fix things with me, mahal, instead of giving up. And thank you rin for all the food we always share together.  Food tastes better talaga when I’m with you.
 ">
                 <img src="images/image8.jpg">
                 <p>5 / 15 / 26 </p>
+                <p class="clickMe">Click me</p>
             </div>
 
             <div class="memory" data-img="images/image9.jpg" data-text="Argh. So hooott!! Our first Cubao date, Look how good-looking we are here oh. and the flowers really suited your outfit. God, I still can’t believe I get to be with someone this pretty.
 ">
                 <img src="images/image9.jpg">
                 <p>3 / 19 / 26 </p>
+                <p class="clickMe">Click me</p>
             </div>
 
             <div class="memory" data-img="images/image10.jpg" data-text="My favorite luto ng asawa ko, and it’s become my favorite version of adobo.  Thank you, baby, for always trying things na hindi ka sanay gawin, pero ginagawa mo for me. Nakikita and na-appreciate ko yon lahat, mahal.">
                 <img src="images/image10.jpg">
                 <p>4 / 16 / 26 </p>
+                <p class="clickMe">Click me</p>
             </div>
 
             <div class="memory" data-img="images/image11.jpg" data-text="This was our first study date together and isa ka sa mga dahilan kung bakit bumalik yung drive ko sa acads. That time, I felt like I was slowly losing motivation for everything. Then you came and everything shifted. All i can say is grabe si Lord, sometimes he really answers prayers in the most unexpected ways.">
                 <img src="images/image11.jpg">
                 <p>3 / 20 / 26 </p>
+                <p class="clickMe">Click me</p>
             </div>
 
             <div class="memory" data-img="images/image12.jpg" data-text="To more pictures like this when we've finally seen more of the world together. Different cities, different views, different countries. Kahit saan man tayo dalhin ng buhay, basta ikaw ang katabi ko sa bawat picture at sa bawat lugar na madidiscover pa natin.
 ">
                 <img src="images/image12.jpg">
                 <p>4 / 8 / 26</p>
+                <p class="clickMe">Click me</p>
             </div>
 
             <div class="memory" data-img="images/image13.jpg" data-text="My ultimate favorite date, ang dorm dates natin. Walang engrande, walang bongga, us na magkatabi lang sa bed, sabay kumain, manood, tumawa, at matulog. Pero somehow, sila yung mga araw na pinaka-naeenjoy ko kasi doon mo hinahayaan na makita kita as you are. yung side mo na walang ayos, walang effort, just you being you, super comfy, super real, and I love that version of you the most.
 ">
                 <img src="images/image13.jpg">
                 <p>4 / 15 / 26</p>
+                <p class="clickMe">Click me</p>
             </div>
 
             <div class="memory" data-img="images/image4.jpg" data-text="That look, argh. Baka matunaw ako nyan, Dabianna. Sa tingin mo pa lang, alam ko nang mahal na mahal mo ako. it makes me feel safe, loved, and at home all at once.">
                 <img src="images/image4.jpg">
                 <p>5 / 4 / 26</p>
+                <p class="clickMe">Click me</p>
             </div>
             
         </div>
